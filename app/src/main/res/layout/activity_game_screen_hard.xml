@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aelment.thatj.chroma.GameScreenHard">
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/readyTimerHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/readyTimer"
+        android:textSize="100sp"
+        android:typeface="serif"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="224dp" />
+
+    <TextView
+        android:id="@+id/gameTextHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/gameTextString"
+        android:textSize="40sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonLayoutHard"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <RelativeLayout
+        android:id="@+id/buttonLayoutHard"
+        android:layout_width="351dp"
+        android:layout_height="351dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875">
+
+        <ImageButton
+            android:id="@+id/gameButton1Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton1" />
+
+        <ImageButton
+            android:id="@+id/gameButton2Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/gameButton1Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton2" />
+
+        <ImageButton
+            android:id="@+id/gameButton3Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/gameButton1Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton3" />
+
+        <ImageButton
+            android:id="@+id/gameButton4Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_below="@+id/gameButton1Hard"
+            android:layout_toEndOf="@+id/gameButton3Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton4" />
+
+        <ImageButton
+            android:id="@+id/gameButton5Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton5" />
+
+        <ImageButton
+            android:id="@+id/gameButton6Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/gameButton5Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton6" />
+
+        <ImageButton
+            android:id="@+id/gameButton7Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton7" />
+
+        <ImageButton
+            android:id="@+id/gameButton8Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_below="@+id/gameButton4Hard"
+            android:layout_toEndOf="@+id/gameButton3Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton8" />
+
+        <ImageButton
+            android:id="@+id/gameButton9Hard"
+            android:layout_width="117dp"
+            android:layout_height="117dp"
+            android:layout_below="@+id/gameButton4Hard"
+            android:layout_toEndOf="@+id/gameButton8Hard"
+            android:background="@android:color/transparent"
+            app:srcCompat="@color/colorButton9" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pointsHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/points"
+        android:textSize="35sp"
+        android:typeface="serif"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timerHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/timer"
+        android:textSize="35sp"
+        android:typeface="serif"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>

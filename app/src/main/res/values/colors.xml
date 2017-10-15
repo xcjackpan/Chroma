@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#555555</color>
+    <color name="colorPrimaryDark">#444444</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorMenuButton">#d3d3d3</color>
+    <color name="colorButton1">#87ceeb</color>
+    <color name="colorButton2">#87ceeb</color>
+    <color name="colorButton3">#87ceeb</color>
+    <color name="colorButton4">#87ceeb</color>
+    <color name="colorButton5">#87ceeb</color>
+    <color name="colorButton6">#87ceeb</color>
+    <color name="colorButton7">#87ceeb</color>
+    <color name="colorButton8">#87ceeb</color>
+    <color name="colorButton9">#87ceeb</color>
+
+
+    <color name="blue">#99D9EA</color>
+    <color name="green">#B5E61D</color>
+    <color name="yellow">#FFF74A</color>
+    <color name="red">#F04A53</color>
+    <color name="purple">#BB66BB</color>
+    <color name="orange">#FF8A3C</color>
+    <color name="brown">#b97a57</color>
+    <color name="pink">#FFAEC9</color>
+    <color name="beige">#EFE4B0</color>
+
+    <color name="transBlue">#8099d9ea</color>
+    <color name="transGreen">#80b5e61d</color>
+    <color name="transYellow">#80fff74a</color>
+    <color name="transRed">#80F04A53</color>
+    <color name="transPurple">#80bb66bb</color>
+    <color name="transOrange">#80ff8a3c</color>
+    <color name="transBrown">#80b97a57</color>
+    <color name="transPink">#80ffaec9</color>
+    <color name="transBeige">#80EFE4B0</color>
+</resources>

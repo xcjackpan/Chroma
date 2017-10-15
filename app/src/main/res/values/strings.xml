@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Chroma</string>
+    <string name="titleString">chroma.</string>
+    <string name="tagline2String">don\'t be tricked by the color of the text!</string>
+    <string name="beginString">begin</string>
+    <string name="gameTextString">//NULL//</string>
+    <string name="tooltipString">TextView</string>
+    <string name="points">0</string>
+    <string name="taglineString">simply tap the color that \n the text says!</string>
+    <string name="score">score: //null//</string>
+    <string name="retrybuttonString">retry</string>
+    <string name="bestScore">best: 0</string>
+    <string name="tap_to_string_retrystring">tap to retry</string>
+    <string name="retryString">tap to retry</string>
+    <string name="timer">5</string>
+    <string name="readyTimer">3</string>
+    <string name="twobytwo">2x2</string>
+    <string name="threebythree">3x3</string>
+    <string name="howToPlay">\?</string>
+    <string name="menuButton">menu</string>
+    <string name="gamemode">mode: //null//</string>
+    <string name="tagline3">for example: if the word is \"blue\", tap the blue square.</string>
+    <string name="backButton">back to menu</string>
+    <string name="header">a color game</string>
+</resources>
