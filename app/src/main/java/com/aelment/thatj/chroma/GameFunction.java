@@ -35,11 +35,23 @@ public class GameFunction {
         textColorRandom = (int) (Math.random() * 4 + 1);
         //decides which color the text will be
 
+        List colorsList = new ArrayList();
+        colorsList.add(1);
+        colorsList.add(2);
+        colorsList.add(3);
+        colorsList.add(4);
+        colorsList.add(5);
+        colorsList.add(6);
+        colorsList.add(7);
+        colorsList.add(8);
+        colorsList.add(9);
+
         while (color1Random == color2Random || color1Random == color3Random || color1Random == color4Random || color2Random == color3Random || color2Random == color4Random || color3Random == color4Random) {
-            color1Random = randomNumberGenerator(1, 9, previous1Color);
-            color2Random = randomNumberGenerator(1, 9, previous2Color);
-            color3Random = randomNumberGenerator(1, 9, previous3Color);
-            color4Random = randomNumberGenerator(1, 9, previous4Color);
+            Collections.shuffle(colorsList);
+            color1Random = (int) colorsList.get(0);
+            color2Random = (int) colorsList.get(1);
+            color3Random = (int) colorsList.get(2);
+            color4Random = (int) colorsList.get(3);
         } //generates random numbers and ensures that none of them are repeats
 
         switch (textButtonRandom) { //generates the String of the colour in the text
@@ -109,16 +121,6 @@ public class GameFunction {
             color8Random = (int) colorsList.get(7);
             color9Random = (int) colorsList.get(8);
         }
-
-        Log.d("DEBUG", "1: " + String.valueOf(color1Random));
-        Log.d("DEBUG", "2: " + String.valueOf(color2Random));
-        Log.d("DEBUG", "3: " + String.valueOf(color3Random));
-        Log.d("DEBUG", "4: " + String.valueOf(color4Random));
-        Log.d("DEBUG", "5: " + String.valueOf(color5Random));
-        Log.d("DEBUG", "6:" + String.valueOf(color6Random));
-        Log.d("DEBUG", "7: " + String.valueOf(color7Random));
-        Log.d("DEBUG", "8: " + String.valueOf(color8Random));
-        Log.d("DEBUG", "9: " + String.valueOf(color9Random));
 
         switch (textButtonRandom) { //generates the String of the colour in the text
             case 1:
