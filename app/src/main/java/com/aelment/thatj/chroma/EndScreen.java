@@ -47,7 +47,7 @@ public class EndScreen extends AppCompatActivity {
         super.onPause();
 
         if (!continueMusic) {
-            MusicManager.stop();
+            MusicManager.stop(this);
             musicPlaying = MusicManager.isPlaying();
         }
     }

@@ -3,6 +3,7 @@ package com.aelment.thatj.chroma;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import static android.media.AudioManager.AUDIOFOCUS_GAIN;
+import static android.media.AudioManager.AUDIOFOCUS_LOSS;
+import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
+import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 
 public class IntroScreen extends AppCompatActivity {
 
@@ -43,10 +49,10 @@ public class IntroScreen extends AppCompatActivity {
     Animation fade5;
     Animation fade6;
     Animation fade7;
-x    Animation fade8;
+    Animation fade8;
 
     //HOW THIS WORKS (so you dont forget later):
-    //there is a newRound method in gamefunction that will randomize numbers to determine what colors buttons will be, which of the buttons will be correct, what the trick color of the text will be
+    //there is a newRound method in GameFunction that will randomize numbers to determine what colors buttons will be, which of the buttons will be correct, what the trick color of the text will be
     //this newRound method returns all those randomized numbers as a RoundData class (this class just stores the randomized numbers)
     //there is a drawGameScreen method that will take the randomized numbers and assign colors to the buttons and the text as well as the string of the text
     //this method is called whenever the user answers correctly
@@ -146,7 +152,6 @@ x    Animation fade8;
                     @Override
                     public void onClick(View v) {
 
-
                         if (muteMusic) {
                             muteMusic = false;
                             muteButton.setImageResource(R.drawable.unmuted);
@@ -158,8 +163,9 @@ x    Animation fade8;
                         } else if (!muteMusic) {
                             muteMusic = true;
                             muteButton.setImageResource(R.drawable.muted);
+                            //am.abandonAudioFocus(mAudioFocusChangeListener);
                             if (MusicManager.isPlaying()) {
-                                MusicManager.stop();
+                                MusicManager.stop(getApplicationContext());
                             }
                             editor.putBoolean("muteMusic", muteMusic);
                             editor.apply();
@@ -174,25 +180,19 @@ x    Animation fade8;
         super.onResume();
         musicPlaying = MusicManager.isPlaying();
         continueMusic = false;
-
-        Log.d("TAG", "INTROSCREEN ONRESUME continueMusic = " + String.valueOf(continueMusic));
-        Log.d("TAG", "INTROSCREEN ONRESUME (before check) musicPlaying = " + String.valueOf(musicPlaying));
         if (!musicPlaying) {
             MusicManager.start(this, 1, muteMusic);
             musicPlaying = MusicManager.isPlaying();
         }
-        Log.d("TAG", "INTROSCREEN ONRESUME (after check) musicPlaying = " + String.valueOf(musicPlaying));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("TAG", "INTROSCREEN ONPAUSE continueMusic = " + String.valueOf(continueMusic));
         if (!continueMusic) {
-            MusicManager.stop();
+            MusicManager.stop(this);
             musicPlaying = MusicManager.isPlaying();
         }
-        Log.d("TAG", "INTROSCREEN ONPAUSE musicPlaying (after checking continueMusic) = " + String.valueOf(musicPlaying));
     }
 
     @Override

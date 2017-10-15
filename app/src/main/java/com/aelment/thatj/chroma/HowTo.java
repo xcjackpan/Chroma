@@ -50,9 +50,7 @@ public class HowTo extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("TAG", "HOWTOSCREEN ONRESUME musicPlaying (before check) = " + String.valueOf(musicPlaying));
         musicPlaying = MusicManager.isPlaying();
-        Log.d("TAG", "HOWTOSCREEN ONRESUME musicPlaying (after check) = " + String.valueOf(musicPlaying));
         continueMusic = false;
         if (!musicPlaying) {
             MusicManager.start(this, 1, muteMusic);
@@ -64,7 +62,7 @@ public class HowTo extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (!continueMusic) {
-            MusicManager.stop();
+            MusicManager.stop(this);
             musicPlaying = MusicManager.isPlaying();
         }
     }

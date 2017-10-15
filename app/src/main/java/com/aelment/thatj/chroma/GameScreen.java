@@ -216,7 +216,7 @@ public class GameScreen extends AppCompatActivity {
         countDownReady.cancel();
 
         if (!continueMusic) {
-            MusicManager.stop();
+            MusicManager.stop(this);
             musicPlaying = MusicManager.isPlaying();
         }
     }
