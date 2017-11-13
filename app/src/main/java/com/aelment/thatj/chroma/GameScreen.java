@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class GameScreen extends AppCompatActivity {
 
     //UI elements
@@ -23,8 +21,8 @@ public class GameScreen extends AppCompatActivity {
     private ImageButton button4;
     private TextView gameText;
     private TextView pointsCount;
-    private TextView timer;
     private TextView readyTimer;
+    private CircleTimer circleTimer;
 
     //variables
     private int points = 0;
@@ -50,8 +48,8 @@ public class GameScreen extends AppCompatActivity {
         button4 = (ImageButton) findViewById(R.id.gameButton4);
         gameText = (TextView) findViewById(R.id.gameText);
         pointsCount = (TextView) findViewById(R.id.points);
-        timer = (TextView) findViewById(R.id.timer);
         readyTimer = (TextView) findViewById(R.id.readyTimer);
+        circleTimer = (CircleTimer) findViewById(R.id.circle);
 
         SharedPreferences sharedPreferencesSettings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         muteMusic = sharedPreferencesSettings.getBoolean("muteMusic", false);
@@ -62,7 +60,10 @@ public class GameScreen extends AppCompatActivity {
         button4.setVisibility(View.GONE);
         gameText.setVisibility(View.GONE);
         pointsCount.setVisibility(View.GONE);
-        timer.setVisibility(View.GONE);
+        circleTimer.setVisibility(View.GONE);
+
+        final CircleTimer.TimerAnimation animation = new CircleTimer.TimerAnimation(circleTimer, 360);
+        animation.setDuration(1600);
 
         countDownReady = new CountDownTimer(3000, 100) { //sets up countdown
             @Override
@@ -83,16 +84,17 @@ public class GameScreen extends AppCompatActivity {
                 button4.setVisibility(View.VISIBLE);
                 gameText.setVisibility(View.VISIBLE);
                 pointsCount.setVisibility(View.VISIBLE);
-                timer.setVisibility(View.VISIBLE);
+                circleTimer.setVisibility(View.VISIBLE);
                 readyTimer.setVisibility(View.GONE);
                 countDown.start();
+                circleTimer.startAnimation(animation);
+
             }
         };
 
         countDown = new CountDownTimer(1600, 100) { //sets up countdown
             @Override
             public void onTick(long millisUntilFinished) {
-                timer.setText(String.valueOf(millisUntilFinished/100));
             }
 
             @Override
@@ -115,6 +117,8 @@ public class GameScreen extends AppCompatActivity {
                             pointsCount.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimer.clearAnimation();
+                            circleTimer.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -136,6 +140,8 @@ public class GameScreen extends AppCompatActivity {
                             pointsCount.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimer.clearAnimation();
+                            circleTimer.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -157,6 +163,8 @@ public class GameScreen extends AppCompatActivity {
                             pointsCount.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimer.clearAnimation();
+                            circleTimer.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -178,6 +186,8 @@ public class GameScreen extends AppCompatActivity {
                             pointsCount.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimer.clearAnimation();
+                            circleTimer.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -197,7 +207,8 @@ public class GameScreen extends AppCompatActivity {
         button4.setVisibility(View.GONE);
         gameText.setVisibility(View.GONE);
         pointsCount.setVisibility(View.GONE);
-        timer.setVisibility(View.GONE);
+        circleTimer.setVisibility(View.GONE);
+
         readyTimer.setVisibility(View.VISIBLE);
         countDownReady.start();
 
@@ -212,6 +223,7 @@ public class GameScreen extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        circleTimer.clearAnimation();
         countDown.cancel();
         countDownReady.cancel();
 
@@ -224,6 +236,7 @@ public class GameScreen extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+            circleTimer.clearAnimation();
             countDown.cancel();
             countDownReady.cancel();
             Intent i = new Intent(this, IntroScreen.class);

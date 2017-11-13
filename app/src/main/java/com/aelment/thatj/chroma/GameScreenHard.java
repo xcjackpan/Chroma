@@ -28,6 +28,7 @@ public class GameScreenHard extends AppCompatActivity {
     private TextView pointsCountHard;
     private TextView timerHard;
     private TextView readyTimerHard;
+    private CircleTimer circleTimerHard;
 
     //countdowns
     private CountDownTimer countDownReady;
@@ -60,8 +61,8 @@ public class GameScreenHard extends AppCompatActivity {
         button9Hard = (ImageButton) findViewById(R.id.gameButton9Hard);
         gameTextHard = (TextView) findViewById(R.id.gameTextHard);
         pointsCountHard = (TextView) findViewById(R.id.pointsHard);
-        timerHard = (TextView) findViewById(R.id.timerHard);
         readyTimerHard = (TextView) findViewById(R.id.readyTimerHard);
+        circleTimerHard = (CircleTimer) findViewById(R.id.circleHard);
 
         //variables initialization
         points = 0;
@@ -80,19 +81,10 @@ public class GameScreenHard extends AppCompatActivity {
         button9Hard.setVisibility(View.GONE);
         gameTextHard.setVisibility(View.GONE);
         pointsCountHard.setVisibility(View.GONE);
-        timerHard.setVisibility(View.GONE);
+        circleTimerHard.setVisibility(View.GONE);
 
-        countDown = new CountDownTimer(1600, 100) { //sets up countdown
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timerHard.setText(String.valueOf(millisUntilFinished/100));
-            }
-
-            @Override
-            public void onFinish() {
-                endGame(points, hard);
-            }
-        };
+        final CircleTimer.TimerAnimation animation = new CircleTimer.TimerAnimation(circleTimerHard, 360);
+        animation.setDuration(1600);
 
         countDownReady = new CountDownTimer(3000, 100) { //sets up countdown
             @Override
@@ -118,9 +110,21 @@ public class GameScreenHard extends AppCompatActivity {
                 button9Hard.setVisibility(View.VISIBLE);
                 gameTextHard.setVisibility(View.VISIBLE);
                 pointsCountHard.setVisibility(View.VISIBLE);
-                timerHard.setVisibility(View.VISIBLE);
+                circleTimerHard.setVisibility(View.VISIBLE);
                 readyTimerHard.setVisibility(View.GONE);
                 countDown.start();
+                circleTimerHard.startAnimation(animation);
+            }
+        };
+
+        countDown = new CountDownTimer(1600, 100) { //sets up countdown
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                endGame(points, hard);
             }
         };
 
@@ -138,6 +142,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -159,6 +165,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -180,6 +188,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -201,6 +211,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -222,6 +234,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -243,6 +257,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -264,6 +280,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -285,6 +303,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -306,6 +326,8 @@ public class GameScreenHard extends AppCompatActivity {
                             pointsCountHard.setText(pointString);
                             countDown.cancel();
                             countDown.start();
+                            circleTimerHard.clearAnimation();
+                            circleTimerHard.startAnimation(animation);
                         } else {
                             countDown.cancel();
                             endGame(points, hard);
@@ -651,6 +673,7 @@ public class GameScreenHard extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             countDown.cancel();
             countDownReady.cancel();
+            circleTimerHard.clearAnimation();
             Intent i = new Intent(this, IntroScreen.class);
             startActivity(i);
             return true;
@@ -681,7 +704,7 @@ public class GameScreenHard extends AppCompatActivity {
         button9Hard.setVisibility(View.GONE);
         gameTextHard.setVisibility(View.GONE);
         pointsCountHard.setVisibility(View.GONE);
-        timerHard.setVisibility(View.GONE);
+        circleTimerHard.setVisibility(View.GONE);
         readyTimerHard.setVisibility(View.VISIBLE);
         countDownReady.start();
 
@@ -698,6 +721,7 @@ public class GameScreenHard extends AppCompatActivity {
         super.onPause();
         countDown.cancel();
         countDownReady.cancel();
+        circleTimerHard.clearAnimation();
 
         if (!continueMusic) {
             MusicManager.stop(this);

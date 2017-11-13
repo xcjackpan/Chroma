@@ -37,9 +37,13 @@ public class MusicManager extends Application{
     }
 
     public static void stop(Context context) {
-        AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        am.abandonAudioFocus(null);
-        mp.stop();
+        try {
+            AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+            am.abandonAudioFocus(null);
+            mp.stop();
+        } catch (NullPointerException e) {
+
+        }
     }
 
     public static boolean isPlaying() {
